@@ -1,0 +1,32 @@
+<!-- Add a new player -->
+<div class="col-md-12 margintop-md">
+	<div class="card">
+	  <div class="card-header">
+	    Edit Player Details
+	  </div>
+	  <div class="card-block">
+	    <!-- <h4 class="card-title">Special title treatment</h4> -->
+	    <div class="card-text">
+	    	<form 	[formGroup]="editPlayerForm"
+	    			(ngSubmit)="onEditPlayerClick()">
+	    		<div class="form-group">
+	    			<input 	type="text"
+	    					class="form-control"
+	    					placeholder="Enter the name of your favourite player"
+	    					formControlName="name"
+	    					[value]="player.name">
+					<p 	*ngIf="!editPlayerForm.controls['name'].valid && editPlayerFormSubmitted"
+						class="error_message">
+						This field is required!
+					</p>
+	    		</div>
+
+	    		<button type="submit"
+	    				class="btn btn-primary cursor_pointer">
+			    	<i class="fa fa-floppy-o marginright-sm"></i>Save Changes
+		    	</button>
+	    	</form>
+	    </div>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,76 @@
+<!-- Add a new player -->
+<div class="col-md-12 margintop-md">
+	<div class="card">
+	  <div class="card-header">
+	    Add a new player to your Team
+	  </div>
+	  <div class="card-block">
+	    <!-- <h4 class="card-title">Special title treatment</h4> -->
+	    <div class="card-text">
+	    	<form 	[formGroup]="addPlayerForm"
+	    			(ngSubmit)="onAddNewPlayerClick()">
+	    		<div class="form-group">
+	    			<input 	type="text"
+	    					class="form-control"
+	    					placeholder="Enter the name of your favourite player"
+	    					formControlName="name">
+					<p 	*ngIf="!addPlayerForm.controls['name'].valid && addPlayerFormSubmitted"
+						class="error_message">
+						This field is required!
+					</p>
+	    		</div>
+
+	    		<button type="submit"
+	    				class="btn btn-primary cursor_pointer">
+			    	<i class="fa fa-plus marginright-sm"></i>Add Player
+		    	</button>
+	    	</form>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+
+
+<!-- List of favourite players -->
+<div class="col-md-12 margintop-lg no-paddingleft no-paddingright">
+	<!-- <div class="card card"> -->
+	  <div class="card-block">
+	    <h3 class="card-title">Favourite Players</h3>
+
+		<div *ngIf="players && players.length > 0" class="card">
+			<table class="table no-marginbottom">
+				<thead class="thead thead-default">
+					<tr>
+						<th>#</th>
+						<th>Player Name</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<template ngFor let-player [ngForOf]="players" let-i="index">
+						<tr>
+							<th scope="row">{{ i + 1 }}</th>
+							<td>{{ player.name }}</td>
+							<td>
+								<div class="pull-left">
+									<a [routerLink]="[player.id]" class="btn btn-sm btn-primary cursor_pointer">
+										<i class="fa fa-pencil marginright-sm"></i>Modify
+									</a>
+									<button class="btn btn-sm btn-danger cursor_pointer marginleft-sm"
+											(click)="onDeletePlayer(player.id)">
+										<i class="fa fa-times marginright-sm"></i>Delete
+									</button>
+								</div>
+							</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</div>
+		<div *ngIf="!players || (players && players.length == 0)" class="text-center">
+			No Players added yet!
+		</div>
+	  </div>
+	<!-- </div> -->
+</div>
