@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  // imgUrl = 'https://angular.io/resources/images/logos/angular2/angular.png';
+  // user: string = '';
+
+  // onImgClick() {
+  // 	console.log("Image Clicked!");
+  // 	this.user = 'Image Clicked!';
+  // }
 }
